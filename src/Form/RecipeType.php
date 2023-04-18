@@ -24,7 +24,7 @@ class RecipeType extends AbstractType
                 'submit',
                 SubmitType::class,
                 [
-                    'label' => 'submit',
+                    'label' => 'Get your recipe',
                 ]
             );
     }
