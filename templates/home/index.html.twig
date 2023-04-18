@@ -12,11 +12,19 @@
 				<b>recipe</b>.</p>
 		</blockquote>
 	</h4>
+	{{ form_start(form) }}
+	{{ form_row(form.instructions) }}
+	{{ form_row(form.submit) }}
+	{{ form_end(form) }}
 {% endblock %}
 
 
 {% block footer %}
 	<p>Copyright ©{{ "now"|date("Y") }}
-		- Powered by <a href="https://openai.com" target="_blank">OpenAI</a> & Developed with ❤️ by <a href="https://moonbase.subscan.io/account/0xa28E71D169FdBe75063eec0A4012b2E654121319" target="_blank">T-Labs 🛸</a> - Icons by
+		- Powered by
+		<a href="https://openai.com" target="_blank">OpenAI</a>
+		& Developed with ❤️ by
+		<a href="https://moonbase.subscan.io/account/0xa28E71D169FdBe75063eec0A4012b2E654121319" target="_blank">T-Labs 🛸</a>
+		- Icons by
 		<a href="https://icons8.com/" target="_blank">icons8</a>.</p>
 {% endblock %}
