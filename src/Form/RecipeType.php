@@ -25,6 +25,10 @@ class RecipeType extends AbstractType
                 SubmitType::class,
                 [
                     'label' => 'Get your recipe',
+                    'attr' => [
+                        'hx-post' => '/',
+                        'hx-target' => '#response',
+                    ],
                 ]
             );
     }
