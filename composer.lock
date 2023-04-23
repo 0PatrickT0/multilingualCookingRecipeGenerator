@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "770aaee311d7326105e8adbda59979ba",
+    "content-hash": "bbe6c1db16739d3c52900636d234b9a9",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1771,6 +1771,54 @@
                 "source": "https://github.com/phpstan/phpdoc-parser/tree/1.18.1"
             },
             "time": "2023-04-07T11:51:11+00:00"
+        },
+        {
+            "name": "picocss/pico",
+            "version": "v1.5.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/picocss/pico.git",
+                "reference": "0534acfa8d5e7151f0d75e71d4929d376986b2dc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/picocss/pico/zipball/0534acfa8d5e7151f0d75e71d4929d376986b2dc",
+                "reference": "0534acfa8d5e7151f0d75e71d4929d376986b2dc",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lucas Larroche",
+                    "email": "lucas@larroche.com",
+                    "homepage": "https://lucaslarroche.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Minimal CSS Framework for semantic HTML.",
+            "homepage": "https://picocss.com",
+            "keywords": [
+                "CSS-Framework",
+                "css",
+                "dark-mode",
+                "dark-theme",
+                "lightweight",
+                "minimal",
+                "minimalist",
+                "minimalistic",
+                "native-html",
+                "scss-framework",
+                "semantic"
+            ],
+            "support": {
+                "issues": "https://github.com/picocss/pico/issues/",
+                "source": "https://github.com/picocss/pico/tree/v1.5.9"
+            },
+            "time": "2023-04-09T04:08:47+00:00"
         },
         {
             "name": "psr/cache",
