@@ -5,26 +5,23 @@
 		Multilingual Cooking Recipe Generator</h1>
 
 	<h4>
-		<blockquote>
-			<p>Enter your
+		<p>
+			<kbd>Enter your
 				<b>ingredients</b>
 				and instantly get an automatically generated
 				<b>recipe</b>.</p>
-		</blockquote>
-	</h4>
-	{{ form_start(form) }}
-	{{ form_row(form.instructions) }}
-	{{ form_row(form.submit) }}
-	{{ form_end(form) }}
-{% endblock %}
-
-
-{% block footer %}
-	<p>Copyright ©{{ "now"|date("Y") }}
-		- Powered by
-		<a href="https://openai.com" target="_blank">OpenAI</a>
-		& Developed with ❤️ by
-		<a href="https://moonbase.subscan.io/account/0xa28E71D169FdBe75063eec0A4012b2E654121319" target="_blank">T-Labs 🛸</a>
-		- Icons by
-		<a href="https://icons8.com/" target="_blank">icons8</a>.</p>
-{% endblock %}
+		</p>
+	</kbd>
+</h4>
+{{ form_start(form) }}
+{{ form_row(form.instructions) }}
+{{ form_row(form.submit) }}
+{{ form_end(form) }}
+<div id="response"></div>{% endblock %}{% block footer %}
+<p>Copyright ©{{ "now"|date("Y") }}
+	- Powered by
+	<a href="https://openai.com" target="_blank">OpenAI</a>
+	& Developed with ❤️ by
+	<a href="https://moonbase.subscan.io/account/0xa28E71D169FdBe75063eec0A4012b2E654121319" target="_blank">T-Labs 🛸</a>
+	- Icons by
+	<a href="https://icons8.com/" target="_blank">icons8</a>.</p>{% endblock %}

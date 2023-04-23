@@ -1,0 +1,15 @@
+<div id="response">
+	{% if json %}
+
+		<blockquote>
+			<code>
+				{{ json|raw }}</code>
+		</blockquote>
+		<footer>
+			<p>
+				<cite>GPT-3 DaVinci</cite>
+				🤖
+			</p>
+		</footer>
+	{% endif %}
+</div>
