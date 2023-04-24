@@ -5,7 +5,7 @@ namespace App\Service;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-class GPT3_Service
+class GPT3_5_Service
 {
     private $client;
     private $parameterBag;
@@ -16,24 +16,25 @@ class GPT3_Service
         $this->parameterBag = $parameterBag;
     }
 
-    public function getRecipeByGPT3(string $instructions): string
+    public function getRecipeByGPT3_5(string $instructions): string
     {
         $open_ai_key = $this->parameterBag->get('OPENAI_API_KEY');
 
         $response = $this->client->request(
             'POST',
-            'https://api.openai.com/v1/completions',
+            'https://api.openai.com/v1/chat/completions',
             [
                 'headers' => [
                     'Content-Type' => 'application/json',
                 ],
                 'json' => [
-                    'model' => 'text-davinci-003',
-                    'prompt' => "proposes une recette de cuisine dans la langue utilisée et avec les ingrédients suivant : ".$instructions,
-                    'temperature' => 0,
-                    'max_tokens' => 4000,
-                    'frequency_penalty' => 0.5,
-                    'presence_penalty' => 0,
+                    'model' => 'gpt-3.5-turbo',
+                    'messages' => [
+                        [
+                            'role' => 'user',
+                            'content' => "proposes une recette de cuisine dans la langue utilisée et avec les ingrédients suivant : " . $instructions,
+                        ]
+                    ],
                 ],
                 'auth_bearer' => $open_ai_key,
             ]
@@ -42,10 +43,10 @@ class GPT3_Service
         switch ($response->getStatusCode()) {
             case 200:
                 $responseArray = $response->toArray() ?? [];
-                return nl2br($responseArray['choices'][0]['text']);
+                return nl2br($responseArray['choices'][0]['message']['content']);
                 break;
 
-                default:
+            default:
                 return 'An error has occurred with code: ' . $response->getStatusCode() . ', please try again.';
                 break;
         }
