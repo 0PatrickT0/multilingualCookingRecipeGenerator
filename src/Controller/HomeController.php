@@ -8,12 +8,12 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\RecipeType;
-use App\Service\GPT3_Service;
+use App\Service\GPT3_5_Service;
 
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index(Request $request, GPT3_Service $openAi): Response
+    public function index(Request $request, GPT3_5_Service $openAi): Response
     {
         $finder = new Finder();
         $finder->files()->in('images')->name('*.png');
@@ -29,7 +29,7 @@ class HomeController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            $json = $openAi->getRecipe($data['instructions']);
+            $json = $openAi->getRecipeByGPT3_5($data['instructions']);
 
             return $this->render('home/recipe.html.twig', [
                 'json' => $json ?? null,
