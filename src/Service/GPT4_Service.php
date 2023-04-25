@@ -40,15 +40,11 @@ class GPT4_Service
             ]
         );
 
-        switch ($response->getStatusCode()) {
-            case 200:
-                $responseArray = $response->toArray() ?? [];
-                return nl2br($responseArray['choices'][0]['message']['content']);
-                break;
-
-            default:
-                return 'An error has occurred with code: ' . $response->getStatusCode() . ', please try again.';
-                break;
+        if ($response->getStatusCode() !== 200) {
+            throw new \Exception('An error has occurred with code: ' . $response->getStatusCode() . ', please try again.');
         }
+
+        $responseArray = $response->toArray() ?? [];
+        return nl2br($responseArray['choices'][0]['message']['content']);
     }
 }
