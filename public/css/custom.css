@@ -582,7 +582,7 @@ body > footer {
   width: 100%;
   margin-right: auto;
   margin-left: auto;
-  padding: var(--block-spacing-vertical) 0;
+/*   padding: var(--block-spacing-vertical) 0; */
 }
 
 /**
@@ -2660,4 +2660,16 @@ textarea,
     transition-delay: 0s !important;
     transition-duration: 0s !important;
   }
+}
+
+/**
+ * Custom
+ */
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 50px;
+  padding: 0 20px;
 }
