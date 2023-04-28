@@ -2041,7 +2041,7 @@ nav ul {
 }
 
 nav {
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 nav ol,
 nav ul {
