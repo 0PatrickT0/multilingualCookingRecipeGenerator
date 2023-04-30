@@ -2,6 +2,9 @@
 
 namespace App\Service;
 
+use App\Entity\Ingredients;
+use App\Entity\Recipe;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
@@ -9,11 +12,13 @@ class GPT3_5_Service
 {
     private $client;
     private $parameterBag;
+    private $entityManager;
 
-    public function __construct(HttpClientInterface $client, ParameterBagInterface $parameterBag)
+    public function __construct(HttpClientInterface $client, ParameterBagInterface $parameterBag, EntityManagerInterface $entityManager)
     {
         $this->client = $client;
         $this->parameterBag = $parameterBag;
+        $this->entityManager = $entityManager;
     }
 
     public function getRecipeByGPT3_5(string $instructions): string
@@ -26,6 +31,7 @@ class GPT3_5_Service
             [
                 'headers' => [
                     'Content-Type' => 'application/json',
+                    'Authorization' => 'Bearer '.$open_ai_key,
                 ],
                 'json' => [
                     'model' => 'gpt-3.5-turbo',
@@ -36,7 +42,6 @@ class GPT3_5_Service
                         ]
                     ],
                 ],
-                'auth_bearer' => $open_ai_key,
             ]
         );
 
@@ -44,6 +49,7 @@ class GPT3_5_Service
             case 200:
                 $responseArray = $response->toArray() ?? [];
                 return nl2br($responseArray['choices'][0]['message']['content']);
+                
                 break;
 
             default:
