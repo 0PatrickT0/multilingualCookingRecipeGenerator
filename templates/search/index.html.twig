@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+	{{ encore_entry_script_tags('app') }}
+	<script>
+		function toggleTheme() {
+const theme = document.documentElement.getAttribute("data-theme");
+if (theme === "dark") {
+document.documentElement.setAttribute("data-theme", "light");
+} else {
+document.documentElement.setAttribute("data-theme", "dark");
+}
+}
+	</script>
+{% endblock %}
+
+{% block logout %}
+	<button>
+		<a href="/logout" role="button">Logout</a>
+	</button>
+{% endblock %}
+
+{% block body %}
+	<h4><img src="/images/{{ random_image }}" onclick="toggleTheme()" alt="logo Multilingual Cooking Recipe Generator"/>
+		Multilingual Cooking Recipe Generator</h4>
+{% endblock %}
+
+{% block footer %}
+	<p>Copyright ©{{ "now"|date("Y") }}
+		- Powered by
+		<a href="https://openai.com" target="_blank">OpenAI</a>
+		& Developed with ❤️ by
+		<a href="https://moonbase.subscan.io/account/0xa28E71D169FdBe75063eec0A4012b2E654121319" target="_blank">T-Labs 🛸</a>
+		- Icons by
+		<a href="https://icons8.com/" target="_blank">icons8</a>.</p>
+{% endblock %}

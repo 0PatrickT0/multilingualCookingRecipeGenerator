@@ -1,5 +1,25 @@
 {% extends 'base.html.twig' %}
 
+{% block javascripts %}
+	{{ encore_entry_script_tags('app') }}
+	<script>
+		function toggleTheme() {
+const theme = document.documentElement.getAttribute("data-theme");
+if (theme === "dark") {
+document.documentElement.setAttribute("data-theme", "light");
+} else {
+document.documentElement.setAttribute("data-theme", "dark");
+}
+}
+	</script>
+{% endblock %}
+
+{% block login %}
+	<button>
+		<a href="/login" role="button">Login</a>
+	</button>
+{% endblock %}
+
 {% block body %}
 	<h1><img src="/images/{{ random_image }}" onclick="toggleTheme()" alt="logo Multilingual Cooking Recipe Generator"/>
 		Multilingual Cooking Recipe Generator</h1>
@@ -13,13 +33,9 @@
 		</p>
 	</kbd>
 </h4>
-{{ form_start(form) }}
-{{ form_row(form.instructions) }}
-{{ form_row(form.submit, {
+{{ form_start(form) }}{{ form_row(form.instructions) }}{{ form_row(form.submit, {
 		label_html: true,
-		label: '<img class="htmx-indicator" src="/wait.svg" alt="wait">&emsp; Get your recipe &emsp;<img class="htmx-indicator" src="/wait.svg" alt="wait">',	}) }}
-{{ form_end(form) }}
-<div id="response"></div>{% endblock %}{% block footer %}
+		label: '<img class="htmx-indicator" src="/wait.svg" alt="wait">&emsp; Get your recipe &emsp;<img class="htmx-indicator" src="/wait.svg" alt="wait">',	}) }}{{ form_end(form) }}<div id="response"></div>{% endblock %}{% block footer %}
 <p>Copyright ©{{ "now"|date("Y") }}
 	- Powered by
 	<a href="https://openai.com" target="_blank">OpenAI</a>

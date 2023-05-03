@@ -31,7 +31,7 @@ class GPT3_5_Service
             [
                 'headers' => [
                     'Content-Type' => 'application/json',
-                    'Authorization' => 'Bearer '.$open_ai_key,
+                    'Authorization' => 'Bearer ' . $open_ai_key,
                 ],
                 'json' => [
                     'model' => 'gpt-3.5-turbo',
@@ -48,8 +48,22 @@ class GPT3_5_Service
         switch ($response->getStatusCode()) {
             case 200:
                 $responseArray = $response->toArray() ?? [];
+
+                // Create Ingredients entity and set the ingredients
+                /* $ingredients = new Ingredients();
+                $ingredients->setIngredients($instructions);
+                $this->entityManager->persist($ingredients); */
+
+                // Create Recipe entity, set the recipe text and link it to Ingredients
+                /* $recipe = new Recipe();
+                $recipe->setRecipe($responseArray['choices'][0]['text']);
+                $recipe->setIngredients($ingredients);
+                $this->entityManager->persist($recipe); */
+
+                /* $this->entityManager->flush(); */
+
                 return nl2br($responseArray['choices'][0]['message']['content']);
-                
+
                 break;
 
             default:
