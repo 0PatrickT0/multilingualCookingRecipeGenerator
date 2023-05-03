@@ -34,16 +34,18 @@ document.documentElement.setAttribute("data-theme", "dark");
 		{% endblock %}
 	</head>
 	<body>
-	<header>
-<div class="container">
-<nav>
-<ul>
-{# <li><img src="/images/{{ random_image }}" onclick="toggleTheme()" alt="???"/></li> #}
-<li><button type="login" id="login" name="login" <a href="#">Login</a></button></li>
-</ul>
-</nav>
-</div>
-</header>
+		<header>
+			<div class="container">
+				<nav>
+					<ul>
+						<li>
+							{% block login %}{% endblock %}
+							{% block logout %}{% endblock %}
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</header>
 		<main class="container"> {% block body %}{% endblock %}
 			</main>
 			<footer class="container">
