@@ -14,10 +14,20 @@ document.documentElement.setAttribute("data-theme", "dark");
 	</script>
 {% endblock %}
 
+{% block logout %}
+	{% if is_granted('ROLE_USER') %}
+		<form action="{{ path('app_logout') }}" method="post">
+			<button type="submit">Logout</button>
+		</form>
+	{% endif %}
+{% endblock %}
+
 {% block login %}
-	<button>
-		<a href="/login" role="button">Login</a>
-	</button>
+	{% if not user %}
+		<button>
+			<a href="{{ path('app_login') }}" role="button">Login</a>
+		</button>
+	{% endif %}
 {% endblock %}
 
 {% block body %}
@@ -32,6 +42,10 @@ document.documentElement.setAttribute("data-theme", "dark");
 				<b>recipe</b>.</p>
 		</p>
 	</kbd>
+	{% if user %}
+		<p>Welcome,
+			{{ user.username }}!</p>
+	{% endif %}
 </h4>
 {{ form_start(form) }}{{ form_row(form.instructions) }}{{ form_row(form.submit, {
 		label_html: true,

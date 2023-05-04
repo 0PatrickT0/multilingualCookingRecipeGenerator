@@ -9,11 +9,12 @@ use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\RecipeType;
 use App\Service\GPT3_5_Service;
+use Symfony\Bundle\SecurityBundle\Security;
 
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index(Request $request, GPT3_5_Service $openAi): Response
+    public function index(Request $request, GPT3_5_Service $openAi, Security $security): Response
     {
         $finder = new Finder();
         $finder->files()->in('images')->name('*.png');
@@ -38,6 +39,7 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', [
             'random_image' => $random_image,
             'form' => $form->createView(),
+            'user' => $security->getUser(),
         ]);
     }
 }

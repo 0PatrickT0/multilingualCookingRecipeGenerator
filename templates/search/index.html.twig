@@ -22,7 +22,27 @@ document.documentElement.setAttribute("data-theme", "dark");
 
 {% block body %}
 	<h4><img src="/images/{{ random_image }}" onclick="toggleTheme()" alt="logo Multilingual Cooking Recipe Generator"/>
-		Multilingual Cooking Recipe Generator</h4>
+		Multilingual Cooking Recipe Generator
+
+		<p>Welcome,
+			{{ user.username }}!</p>
+	</h4>
+{% endblock %}
+
+{% block content %}
+	<h1>Ingredients</h1>
+	<ul>
+		{% for ingredient in ingredients %}
+			<li>{{ Ingredients.ingredients }}</li>
+		{% endfor %}
+	</ul>
+
+	<h1>Recipes</h1>
+	<ul>
+		{% for recipe in recipes %}
+			<li>{{ recipe.recipe }}</li>
+		{% endfor %}
+	</ul>
 {% endblock %}
 
 {% block footer %}
