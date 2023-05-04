@@ -14,6 +14,12 @@ document.documentElement.setAttribute("data-theme", "dark");
 	</script>
 {% endblock %}
 
+{% block home %}
+	<button>
+		<a href="/" role="button">Home</a>
+	</button>
+{% endblock %}
+
 {% block body %}
 	<h1><img src="/images/{{ random_image }}" onclick="toggleTheme()" alt="logo Multilingual Cooking Recipe Generator"/>
 		Multilingual Cooking Recipe Generator</h1>
