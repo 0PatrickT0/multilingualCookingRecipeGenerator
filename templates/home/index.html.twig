@@ -16,9 +16,9 @@ document.documentElement.setAttribute("data-theme", "dark");
 
 {% block logout %}
 	{% if is_granted('ROLE_USER') %}
-		<form action="{{ path('app_logout') }}" method="post">
-			<button type="submit">Logout</button>
-		</form>
+		<button>
+			<a href="{{ path('app_logout') }}" role="button">Logout</a>
+		</button>
 	{% endif %}
 {% endblock %}
 
