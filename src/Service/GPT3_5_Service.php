@@ -50,17 +50,17 @@ class GPT3_5_Service
                 $responseArray = $response->toArray() ?? [];
 
                 // Create Ingredients entity and set the ingredients
-                /* $ingredients = new Ingredients();
+                $ingredients = new Ingredients();
                 $ingredients->setIngredients($instructions);
-                $this->entityManager->persist($ingredients); */
+                $this->entityManager->persist($ingredients);
 
                 // Create Recipe entity, set the recipe text and link it to Ingredients
-                /* $recipe = new Recipe();
+                $recipe = new Recipe();
                 $recipe->setRecipe($responseArray['choices'][0]['text']);
                 $recipe->setIngredients($ingredients);
-                $this->entityManager->persist($recipe); */
+                $this->entityManager->persist($recipe);
 
-                /* $this->entityManager->flush(); */
+                $this->entityManager->flush();
 
                 return nl2br($responseArray['choices'][0]['message']['content']);
 
