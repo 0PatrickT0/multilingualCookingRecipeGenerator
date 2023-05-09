@@ -28,9 +28,9 @@ class SearchController extends AbstractController
 
         /*         $ingredients = $this->getDoctrine()
             ->getRepository(Ingredient::class)
-            ->findAll();
+            ->findAll(); */
 
-        $recipes = $this->getDoctrine()
+        /* $recipes = $this->getDoctrine()
             ->getRepository(Recipe::class)
             ->findAll(); */
 
@@ -39,8 +39,8 @@ class SearchController extends AbstractController
 
         return $this->render('search/index.html.twig', [
             'random_image' => $random_image,
-            /* 'ingredients' => $ingredients,
-            'recipes' => $recipes, */
+            /* 'ingredients' => $ingredients, */
+            /* 'recipes' => $recipes->getRecipe(), */
             'user' => $security->getUser(),
             'controller_name' => 'SearchController',
         ]);
