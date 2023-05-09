@@ -1233,7 +1233,7 @@ fieldset {
 label,
 fieldset legend {
   display: block;
-  margin-bottom: calc(var(--spacing) * 0.25);
+  margin-bottom: calc(var(--spacing) * 0.75);
   font-weight: var(--form-label-font-weight, var(--font-weight));
 }
 

@@ -16,17 +16,17 @@ document.documentElement.setAttribute("data-theme", "dark");
 
 {% block logout %}
 	{% if is_granted('ROLE_USER') %}
-		<button>
-			<a href="{{ path('app_logout') }}" role="button">Logout</a>
-		</button>
+		<a role="button" class="secondary outline">Welcome
+			{{ user.username }}
+			!</a>
+		<a href="{{ path('app_search') }}" role="button" class="contrast outline">Recipes</a>
+		<a href="{{ path('app_logout') }}" role="button">Logout</a>
 	{% endif %}
 {% endblock %}
 
 {% block login %}
 	{% if not user %}
-		<button>
-			<a href="{{ path('app_login') }}" role="button">Login</a>
-		</button>
+		<a href="{{ path('app_login') }}" role="button">Login</a>
 	{% endif %}
 {% endblock %}
 
@@ -42,10 +42,7 @@ document.documentElement.setAttribute("data-theme", "dark");
 				<b>recipe</b>.</p>
 		</p>
 	</kbd>
-	{% if user %}
-		<p>Welcome,
-			{{ user.username }}!</p>
-	{% endif %}
+
 </h4>
 {{ form_start(form) }}{{ form_row(form.instructions) }}{{ form_row(form.submit, {
 		label_html: true,

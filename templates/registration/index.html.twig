@@ -15,9 +15,7 @@ document.documentElement.setAttribute("data-theme", "dark");
 {% endblock %}
 
 {% block home %}
-	<button>
 		<a href="{{ path('app_home') }}" role="button">Home</a>
-	</button>
 {% endblock %}
 
 {% block body %}
@@ -47,8 +45,7 @@ document.documentElement.setAttribute("data-theme", "dark");
 				<input type="password" name="password_confirm" id="inputPasswordConfirm" class="form-control" autocomplete="new-password" required>
 			</div>
 			<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-			<div class="checkbox mb-3">
-			</div>
+			<div class="checkbox mb-3"></div>
 			<button class="btn btn-lg btn-primary" type="submit" name="action" value="register">
 				Register
 			</button>

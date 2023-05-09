@@ -15,9 +15,10 @@ document.documentElement.setAttribute("data-theme", "dark");
 {% endblock %}
 
 {% block logout %}
-	<button>
-		<a href="{{ path('app_logout') }}" role="button">Logout</a>
-	</button>
+	<a role="button" class="secondary outline">Welcome
+		{{ user.username }}
+		!</a>
+	<a href="{{ path('app_logout') }}" role="button">Logout</a>
 {% endblock %}
 
 {% block body %}
