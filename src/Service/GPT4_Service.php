@@ -37,7 +37,8 @@ class GPT4_Service
                     ],
                 ],
                 'auth_bearer' => $open_ai_key,
-            ]
+            ],
+            ['timeout' => 5]
         );
 
         if ($response->getStatusCode() !== 200) {
