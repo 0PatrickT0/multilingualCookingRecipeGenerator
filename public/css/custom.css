@@ -2948,6 +2948,19 @@ textarea,
   padding: 0 20px;
 }
 
+.footer {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 90% 10%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.toggleButton {
+  float: right;
+  margin-left: 10px;
+}
+
 *,
 *::before,
 *::after {

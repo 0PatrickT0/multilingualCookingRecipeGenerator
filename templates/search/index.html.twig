@@ -20,16 +20,20 @@
 
 {% block content %}
 	{# 	<h1>Ingredients</h1>
-			<ul>
-				{% for ingredient in ingredients %}
-					<li>{{ Ingredients.ingredients }}</li>
-				{% endfor %}
-			</ul> #}
+					<ul>
+						{% for ingredient in ingredients %}
+							<li>{{ Ingredients.ingredients }}</li>
+						{% endfor %}
+					</ul> #}
 
 	<h1>Recipes</h1>
 	<ul>
 		{% for recipe in recipes %}
 			<li>{{ recipe.recipe }}</li>
+		{% else %}
+			<li>
+				<em>no recipe found</em>
+			</li>
 		{% endfor %}
 	</ul>
 {% endblock %}
