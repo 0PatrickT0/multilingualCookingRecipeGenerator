@@ -38,10 +38,13 @@
 {{ form_start(form) }}{{ form_row(form.instructions) }}{{ form_row(form.submit, {
 		label_html: true,
 		label: '<img class="htmx-indicator" src="/wait.svg" alt="wait">&emsp; Get your recipe &emsp;<img class="htmx-indicator" src="/wait.svg" alt="wait">',	}) }}{{ form_end(form) }}<div id="response"></div>{% endblock %}{% block footer %}
-<p>Copyright ©{{ "now"|date("Y") }}
-	- Powered by
-	<a href="https://openai.com" target="_blank">OpenAI</a>
-	& Developed with ❤️ by
-	<a href="https://moonbase.subscan.io/account/0xa28E71D169FdBe75063eec0A4012b2E654121319" target="_blank">T-Labs 🛸</a>
-	- Icons by
-	<a href="https://icons8.com/" target="_blank">icons8</a>.</p>{% endblock %}
+<div class="footer">
+	<div>Copyright ©{{ "now"|date("Y") }}
+		- Powered by
+		<a href="https://openai.com" target="_blank">OpenAI</a>
+		& Developed with ❤️ by
+		<a href="https://moonbase.subscan.io/account/0xa28E71D169FdBe75063eec0A4012b2E654121319" target="_blank">T-Labs 🛸</a>
+		- Icons by
+		<a href="https://icons8.com/" target="_blank">icons8</a>.</div>
+	<div><img class="toggleButton" src="/icons8-toggle-button-78.png" onclick="toggleTheme()" alt="Toggle button"></div>
+</div>{% endblock %}
