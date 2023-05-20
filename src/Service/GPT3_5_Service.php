@@ -41,7 +41,7 @@ class GPT3_5_Service
                     'messages' => [
                         [
                             'role' => 'user',
-                            'content' => "proposes une recette de cuisine dans la langue utilisée et avec les ingrédients suivant : " . $instructions,
+                            'content' => "proposes une recette de cuisine dans la langue utilisée et avec les ingrédients suivants : " . $instructions,
                         ]
                     ],
                 ],
