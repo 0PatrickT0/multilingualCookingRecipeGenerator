@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block logout %}
+	<a href="{{ path('app_home') }}" role="button" class="outline">Home</a>
 	<a role="button" class="secondary outline">Welcome
 		{{ user.username }}
 		!</a>
@@ -19,14 +20,21 @@
 {% endblock %}
 
 {% block content %}
-
+	{# 	{{ dump(user) }}
+				{{ dump(chatLog.question) }}
+				{{ dump(chatLog.answer) }} #}
 	<h1>Recipes</h1>
 	<ul>
-		{% for recipe in recipes %}
+		{% for chatLog in chatLogs %}
 			<blockquote>
-				<code>
-					<li>{{ recipe.recipe|raw }}</li>
-				</code>
+				<li>{{ chatLog.question|raw }}</li>
+				<blockquote>
+					<code>
+						<li>
+							<pre>{{ chatLog.answer|raw }}</pre>
+						</li>
+					</code>
+				</blockquote>
 			</blockquote>
 		{% else %}
 			<blockquote>
