@@ -2,8 +2,7 @@
 
 namespace App\Service;
 
-use App\Entity\Ingredients;
-use App\Entity\Recipe;
+use App\Entity\ChatLog;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -41,7 +40,7 @@ class GPT3_5_Service
                     'messages' => [
                         [
                             'role' => 'user',
-                            'content' => "proposes une recette de cuisine dans la langue utilisée et avec les ingrédients suivant : " . $instructions,
+                            'content' => "proposes une recette de cuisine dans la langue utilisée et avec les ingrédients suivants : " . $instructions,
                         ]
                     ],
                 ],
@@ -52,24 +51,18 @@ class GPT3_5_Service
             case 200:
                 $responseArray = $response->toArray() ?? [];
 
-                // Create Ingredients entity, set the ingredients and link it to User
-                $ingredients = new Ingredients();
-                $ingredients->setIngredients($instructions);
+                // Create ChatLog entity and set the question and answer
+                $chatLog = new ChatLog();
+                $chatLog->setQuestion($instructions);
+                $chatLog->setAnswer($responseArray['choices'][0]['message']['content']);
 
-                // Link Ingredients to User if user is connected
+                // Link ChatLog to User if user is connected
                 $user = $this->security->getUser();
                 if ($user) {
-                    $ingredients->setUser($user);
+                    $chatLog->setUser($user);
                 }
 
-                $this->entityManager->persist($ingredients);
-
-                // Create Recipe entity, set the recipe text and link it to Ingredients
-                $recipe = new Recipe();
-                $recipe->setRecipe($responseArray['choices'][0]['message']['content']);
-                $recipe->setIngredients($ingredients);
-                $this->entityManager->persist($recipe);
-
+                $this->entityManager->persist($chatLog);
                 $this->entityManager->flush();
 
                 return nl2br($responseArray['choices'][0]['message']['content']);

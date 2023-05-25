@@ -34,12 +34,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Ingredients::class)]
-    private Collection $ingredients;
+    /* #[ORM\OneToMany(mappedBy: 'user', targetEntity: Ingredients::class)]
+    private Collection $ingredients; */
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: ChatLog::class)]
+    private Collection $chatLogs;
 
     public function __construct()
     {
-        $this->ingredients = new ArrayCollection();
+        /* $this->ingredients = new ArrayCollection(); */
+        $this->chatLogs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -115,12 +119,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @return Collection<int, Ingredients>
      */
-    public function getIngredients(): Collection
+/*     public function getIngredients(): Collection
     {
         return $this->ingredients;
-    }
+    } */
 
-    public function addIngredient(Ingredients $ingredient): self
+/*     public function addIngredient(Ingredients $ingredient): self
     {
         if (!$this->ingredients->contains($ingredient)) {
             $this->ingredients->add($ingredient);
@@ -128,14 +132,44 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         return $this;
-    }
+    } */
 
-    public function removeIngredient(Ingredients $ingredient): self
+/*     public function removeIngredient(Ingredients $ingredient): self
     {
         if ($this->ingredients->removeElement($ingredient)) {
             // set the owning side to null (unless already changed)
             if ($ingredient->getUser() === $this) {
                 $ingredient->setUser(null);
+            }
+        }
+
+        return $this;
+    } */
+
+    /**
+     * @return Collection<int, ChatLog>
+     */
+    public function getChatLogs(): Collection
+    {
+        return $this->chatLogs;
+    }
+
+    public function addChatLog(ChatLog $chatLog): self
+    {
+        if (!$this->chatLogs->contains($chatLog)) {
+            $this->chatLogs->add($chatLog);
+            $chatLog->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChatLog(ChatLog $chatLog): self
+    {
+        if ($this->chatLogs->removeElement($chatLog)) {
+            // set the owning side to null (unless already changed)
+            if ($chatLog->getUser() === $this) {
+                $chatLog->setUser(null);
             }
         }
 

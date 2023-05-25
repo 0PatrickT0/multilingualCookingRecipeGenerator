@@ -6,14 +6,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\Recipe;
+use App\Entity\User;
+use App\Entity\ChatLog;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\SecurityBundle\Security;
 
 class SearchController extends AbstractController
 {
     #[Route('/search', name: 'app_search')]
-    public function index (Security $security, ManagerRegistry $doctrine): Response
+    public function index(Security $security, ManagerRegistry $doctrine): Response
     {
         $finder = new Finder();
         $finder->files()->in('images')->name('*.png');
@@ -23,12 +24,17 @@ class SearchController extends AbstractController
         }
         $random_image = $images ? $images[array_rand($images)] : '';
 
-        $recipes = $doctrine->getRepository(Recipe::class)->findBy(['user' => $this->getUser()]);
+        $user = $security->getUser();
+        $chatsLogs = null;
+
+        if ($user instanceof User) {
+            $chatsLogs = $user->getChatLogs();
+        }
 
         return $this->render('search/index.html.twig', [
             'random_image' => $random_image,
-            'recipes' => $recipes,
-            'user' => $security->getUser(),
+            'user' => $user,
+            'chatLogs' => $chatsLogs,
             'controller_name' => 'SearchController',
         ]);
     }

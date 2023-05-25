@@ -13,6 +13,7 @@ use Symfony\Bundle\SecurityBundle\Security;
 
 class HomeController extends AbstractController
 {
+
     #[Route('/', name: 'app_home')]
     public function index(Request $request, GPT3_5_Service $openAi, Security $security): Response
     {
