@@ -20,46 +20,37 @@
 {% endblock %}
 
 {% block content %}
-	{# 	{{ dump(user) }}
-				{{ dump(chatLog.question) }}
-				{{ dump(chatLog.answer) }} #}
-	<h1>Recipes</h1>
-	<ul>
-		{% for chatLog in chatLogs %}
-			<blockquote>
-				<li>{{ chatLog.question|raw }}</li>
-				<blockquote>
-					<code>
-						<li>
-							<pre>{{ chatLog.answer|raw }}</pre>
-						</li>
-					</code>
-				</blockquote>
-			</blockquote>
-		{% else %}
+<h1>Recipes</h1>
+<ul>
+	{% for chatLog in chatLogs %}
+		<blockquote>
+			<li>{{ chatLog.question|raw }}</li>
 			<blockquote>
 				<code>
 					<li>
-						<em>no recipe found</em>
+						{{ chatLog.answer|raw }}
 					</li>
-				</code>
-			</blockquote>
-		</li>
-	{% endfor %}
-</ul>{% endblock %}{% block footer %}
-<div class="footer">
-	<div>Copyright ©{{ "now"|date("Y") }}
-		- Powered by
-		<a href="https://openai.com" target="_blank">OpenAI</a>
-		& Developed with ❤️ by
-		<a href="https://moonbase.subscan.io/account/0xa28E71D169FdBe75063eec0A4012b2E654121319" target="_blank">T-Labs 🛸</a>
-		- Icons by
-		<a href="https://icons8.com/" target="_blank">icons8</a>.</div>
-	<div>
-		{% if app.request.cookies.get('theme') == 'dark' %}
-			<img class="toggleButton" src="/icons8-soleil-48.png" onclick="toggleTheme()" alt="Toggle button" style="cursor: pointer;">
-		{% else %}
-			<img class="toggleButton" src="/icons8-brouillard-de-nuit-48.png" onclick="toggleTheme()" alt="Toggle button" style="cursor: pointer;">
-		{% endif %}
-	</div>
-</div>{% endblock %}
+				</div>
+			</code>
+		</blockquote>
+	</blockquote>
+{% else %}
+	<blockquote>
+		<code>
+			<li>
+				<em>no recipe found</em>
+			</li>
+		</code>
+	</blockquote>
+</li>{% endfor %}</ul>{% endblock %}{% block footer %}<div class="footer"><div>Copyright ©{{ "now"|date("Y") }}
+- Powered by
+<a href="https://openai.com" target="_blank">OpenAI</a>
+& Developed with ❤️ by
+<a href="https://moonbase.subscan.io/account/0xa28E71D169FdBe75063eec0A4012b2E654121319" target="_blank">T-Labs 🛸</a>
+- Icons by
+<a href="https://icons8.com/" target="_blank">icons8</a>.</div><div>
+{% if app.request.cookies.get('theme') == 'dark' %}
+	<img class="toggleButton" src="/icons8-soleil-48.png" onclick="toggleTheme()" alt="Toggle button" style="cursor: pointer;">
+{% else %}
+	<img class="toggleButton" src="/icons8-brouillard-de-nuit-48.png" onclick="toggleTheme()" alt="Toggle button" style="cursor: pointer;">
+{% endif %}</div></div>{% endblock %}
