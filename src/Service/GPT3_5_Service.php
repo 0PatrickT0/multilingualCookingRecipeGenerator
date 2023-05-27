@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Entity\ChatLog;
+use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -60,6 +61,9 @@ class GPT3_5_Service
                 $user = $this->security->getUser();
                 if ($user) {
                     $chatLog->setUser($user);
+                } else {
+                    $anonymousUser = $this->entityManager->getRepository(User::class)->findOneBy(['username' => 'anonymous']);
+                    $chatLog->setUser($anonymousUser);
                 }
 
                 $this->entityManager->persist($chatLog);
