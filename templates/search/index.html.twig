@@ -6,11 +6,15 @@
 {% endblock %}
 
 {% block logout %}
-	<a href="{{ path('app_home') }}" role="button" class="outline">Home</a>
-	<a role="button" class="secondary outline">Welcome
-		{{ user.username }}
-		!</a>
-	<a href="{{ path('app_logout') }}" role="button">Logout</a>
+	{% if is_granted('ROLE_USER') %}
+		<a role="button" class="secondary outline">Welcome
+			{{ user.username }}!</a>
+		<a href="{{ path('app_home') }}" role="button" class="contrast outline">Home</a>
+		{% if is_granted('ROLE_ADMIN') %}
+			<a href="{{ path('app_admin') }}" role="button" class="contrast outline">Admin</a>
+		{% endif %}
+		<a href="{{ path('app_logout') }}" role="button">Logout</a>
+	{% endif %}
 {% endblock %}
 
 {% block body %}
@@ -55,7 +59,7 @@
 		- Icons by
 		<a href="https://icons8.com/" target="_blank">icons8</a>.</div>
 	<div>
-		{% if app.request.cookies.get('theme') == 'dark' %}
+		{% if app.request.cookies.get('theme') == 'light' %}
 			<img class="toggleButton" src="/icons8-soleil-48.png" onclick="toggleTheme()" alt="Toggle button" style="cursor: pointer;">
 		{% else %}
 			<img class="toggleButton" src="/icons8-brouillard-de-nuit-48.png" onclick="toggleTheme()" alt="Toggle button" style="cursor: pointer;">
