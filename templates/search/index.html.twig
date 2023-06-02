@@ -37,6 +37,7 @@
 				</hgroup>
 				<div class="code-block">
 					<pre><code>{{ chatLog.answer|raw }}</code></pre>
+					{# <a href="{{ path('delete_chatlog', {'id': chatLog.id}) }}" class="btn btn-danger">Delete</a> #}
 				</div>
 			</blockquote>
 		{% else %}
