@@ -7,7 +7,7 @@
 
 {% block logout %}
 	{% if is_granted('ROLE_USER') %}
-		<a role="button" class="secondary outline">Welcome
+		<a role="button" class="outline">Welcome
 			{{ user.username }}!</a>
 		<a href="{{ path('app_search') }}" role="button" class="contrast outline">Recipes</a>
 		{% if is_granted('ROLE_ADMIN') %}
@@ -40,7 +40,7 @@
 </h4>
 {{ form_start(form) }}{{ form_row(form.instructions) }}{{ form_row(form.submit, {
 		label_html: true,
-		label: '<img class="htmx-indicator" src="/wait.svg" alt="wait">&emsp; Get your recipe &emsp;<img class="htmx-indicator" src="/wait.svg" alt="wait">',	}) }}{{ form_end(form) }}<div id="response"></div>{% endblock %}{% block footer %}
+		label: '<img class="htmx-indicator" src="/oval.svg" alt="wait">&emsp; Get your recipe &emsp;<img class="htmx-indicator" src="/oval.svg" alt="wait">',	}) }}{{ form_end(form) }}<div id="response"></div>{% endblock %}{% block footer %}
 <div class="footer">
 	<div>Copyright ©{{ "now"|date("Y") }}
 		- Powered by
@@ -50,10 +50,10 @@
 		- Icons by
 		<a href="https://icons8.com/" target="_blank">icons8</a>.</div>
 	<div>
-		{% if app.request.cookies.get('theme') == 'dark' %}
-			<img class="toggleButton" src="/icons8-soleil-48.png" onclick="toggleTheme()" alt="Toggle button" style="cursor: pointer;">
-		{% else %}
+		{% if app.request.cookies.get('theme') == 'light' %}
 			<img class="toggleButton" src="/icons8-brouillard-de-nuit-48.png" onclick="toggleTheme()" alt="Toggle button" style="cursor: pointer;">
+		{% else %}
+			<img class="toggleButton" src="/icons8-soleil-48.png" onclick="toggleTheme()" alt="Toggle button" style="cursor: pointer;">
 		{% endif %}
 	</div>
 </div>{% endblock %}
