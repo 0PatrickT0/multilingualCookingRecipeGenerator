@@ -37,17 +37,17 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('MCRG');
+            ->setTitle('MCookRecGen | T-Labs 🛸');
     }
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToRoute('Home', 'fa fa-home', 'app_home');
+        yield MenuItem::section();
+        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::section();
         yield MenuItem::linkToCrud('Users', 'fa fa-id-card', User::class);
         yield MenuItem::section();
         yield MenuItem::linkToCrud('Recipes', 'fa fa-list', ChatLog::class);
-        // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
 }
