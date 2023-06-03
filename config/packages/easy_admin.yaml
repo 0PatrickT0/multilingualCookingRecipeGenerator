@@ -1,0 +1,39 @@
+easy_admin:
+    entities:
+        - App\Entity\User:
+            class: App\Entity\User
+            label: User
+            list:
+                fields:
+                    - id
+                    - username
+                    - roles
+                    - password
+                actions:
+                    - { username: 'edit' }
+                    - { username: 'delete' }
+                    - { roles: 'edit' }
+            form:
+                fields:
+                    - username
+                    - roles
+        - App\Entity\ChatLog:
+            class: App\Entity\ChatLog
+            label: ChatLog
+            list:
+                fields:
+                    - id
+                    - question
+                    - answer
+                actions:
+                    - { question: 'edit' }
+                    - { question: 'delete' }
+                    - { answer: 'edit' }
+                    - { answer: 'delete' }
+            form:
+                fields:
+                    - question
+                    - answer
+    design:
+        menu:
+            - { label: 'Home', icon: 'fa fa-home', route: 'app_home' }
