@@ -20,7 +20,7 @@ class UserCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            /* ->renderSidebarMinimized() */
+            ->renderSidebarMinimized()
             ->setEntityPermission('ROLE_ADMIN')
             ->setPaginatorPageSize(20);
     }
