@@ -44,8 +44,8 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToRoute('Home', 'fa fa-home', 'app_home');
         yield MenuItem::section();
-        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::section();
+/*         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
+        yield MenuItem::section(); */
         yield MenuItem::linkToCrud('Users', 'fa fa-id-card', User::class);
         yield MenuItem::section();
         yield MenuItem::linkToCrud('Recipes', 'fa fa-list', ChatLog::class);

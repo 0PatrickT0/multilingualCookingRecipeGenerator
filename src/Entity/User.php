@@ -141,4 +141,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->getUsername(); // Change this to the appropriate property representing the username in your User entity
+    }
+    
 }

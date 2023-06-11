@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\ChatLog;
+use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -20,7 +21,7 @@ class ChatLogCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            /* ->renderSidebarMinimized() */
+            ->renderSidebarMinimized()
             ->setEntityPermission('ROLE_ADMIN')
             ->setPaginatorPageSize(20);
     }
@@ -32,13 +33,7 @@ class ChatLogCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),
             TextField::new('question'),
             TextEditorField::new('answer'),
-            /* AssociationField::new('user') */
-                /*->autocomplete()
-                ->setFormTypeOption('by_reference', false)
-                ->setRequired(true), */
-/*                 ->formatValue(function ($value, $entity) {
-                    return $entity->getUser()->getUsername();
-                }), */
+            AssociationField::new('user'),
         ];
     }
 }
