@@ -29,7 +29,7 @@ class GPT3_Service
                 ],
                 'json' => [
                     'model' => 'text-davinci-003',
-                    'prompt' => "proposes une recette de cuisine dans la langue utilisée et avec les ingrédients suivant : ".$instructions,
+                    'prompt' => "" . $instructions,
                     'temperature' => 0,
                     'max_tokens' => 4000,
                     'frequency_penalty' => 0.5,
@@ -45,7 +45,7 @@ class GPT3_Service
                 return nl2br($responseArray['choices'][0]['text']);
                 break;
 
-                default:
+            default:
                 return 'An error has occurred with code: ' . $response->getStatusCode() . ', please try again.';
                 break;
         }
