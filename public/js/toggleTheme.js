@@ -9,14 +9,6 @@ function toggleTheme() {
   }
 }
 
-// check for the theme cookie on page load and set the theme accordingly
-window.onload = function () {
-  const theme = getCookie("theme");
-  if (theme) {
-    document.documentElement.setAttribute("data-theme", theme);
-  }
-};
-
 // helper function to get a cookie by name
 function getCookie(name) {
   const value = "; " + document.cookie;
@@ -25,3 +17,11 @@ function getCookie(name) {
     return parts.pop().split(";").shift();
   }
 }
+
+// check for the theme cookie on page load and set the theme accordingly
+window.onload = function () {
+  const theme = getCookie("theme");
+  if (theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+  }
+};
