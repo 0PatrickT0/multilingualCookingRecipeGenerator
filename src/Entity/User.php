@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(
@@ -23,6 +24,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
+    #[Assert\NotBlank(message: "The field must not be empty.")]
+    #[Assert\Length(max: "180", maxMessage: "The 'username' field must not exceed {{ limit }} characters.")]
     private ?string $username = null;
 
     #[ORM\Column]
@@ -146,5 +149,4 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return $this->getUsername(); // Change this to the appropriate property representing the username in your User entity
     }
-    
 }
