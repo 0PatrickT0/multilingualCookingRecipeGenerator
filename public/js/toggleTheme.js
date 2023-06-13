@@ -19,9 +19,9 @@ function getCookie(name) {
 }
 
 // check for the theme cookie on page load and set the theme accordingly
-window.onload = function () {
+document.addEventListener("DOMContentLoaded", function () {
   const theme = getCookie("theme");
   if (theme) {
     document.documentElement.setAttribute("data-theme", theme);
   }
-};
+});
