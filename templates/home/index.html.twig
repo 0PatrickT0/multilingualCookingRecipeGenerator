@@ -25,7 +25,7 @@
 {% endblock %}
 
 {% block body %}
-	<h1><img src="/images/{{ random_image }}" onclick="toggleTheme()" alt="logo Multilingual Cooking Recipe Generator"/>
+	<h1><img src="/logo/{{ random_image }}" onclick="toggleTheme()" alt="logo Multilingual Cooking Recipe Generator"/>
 		Multilingual Cooking Recipe Generator</h1>
 
 	<h4>
@@ -44,16 +44,16 @@
 <div class="footer">
 	<div>Copyright ©{{ "now"|date("Y") }}
 		- Powered by
-		<a href="https://openai.com" target="_blank">OpenAI</a>
+		<a href="https://openai.com" target="_blank">OpenAI{#  <img src="/icons8-chatgpt-20.png" alt="OpenAI"> #}</a>
 		& Developed with ❤️ by
-		<a href="https://moonbase.subscan.io/account/0xa28E71D169FdBe75063eec0A4012b2E654121319" target="_blank">T-Labs 🛸</a>
+		<a href="https://github.com/0PatrickT0" target="_blank">T-Labs 🤖</a>
 		- Icons by
-		<a href="https://icons8.com/" target="_blank">icons8</a>.</div>
+		<a href="https://icons8.com/" target="_blank">icons8{#  <img src="/icons8-icons8-nouveau-logo-20.png" alt="icons8"> #}</a>.</div>
 	<div>
 		{% if app.request.cookies.get('theme') == 'light' %}
-			<img class="toggleButton" src="/icons8-brouillard-de-nuit-48.png" onclick="toggleTheme()" alt="Toggle button" style="cursor: pointer;">
+			<img class="toggleButton" src="/icons/icons8-brouillard-de-nuit-48.png" onclick="toggleTheme()" alt="Toggle button" style="cursor: pointer;">
 		{% else %}
-			<img class="toggleButton" src="/icons8-soleil-48.png" onclick="toggleTheme()" alt="Toggle button" style="cursor: pointer;">
+			<img class="toggleButton" src="/icons/icons8-soleil-48.png" onclick="toggleTheme()" alt="Toggle button" style="cursor: pointer;">
 		{% endif %}
 	</div>
 </div>{% endblock %}
