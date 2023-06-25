@@ -17,7 +17,7 @@ class SearchController extends AbstractController
     public function index(Security $security, ManagerRegistry $doctrine): Response
     {
         $finder = new Finder();
-        $finder->files()->in('images')->name('*.png');
+        $finder->files()->in('logo')->name('*.png');
         $images = [];
         foreach ($finder as $file) {
             $images[] = $file->getFilename();

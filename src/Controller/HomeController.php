@@ -18,7 +18,7 @@ class HomeController extends AbstractController
     public function index(Request $request, GPT3_5_Service $openAi, Security $security): Response
     {
         $finder = new Finder();
-        $finder->files()->in('images')->name('*.png');
+        $finder->files()->in('logo')->name('*.png');
         $images = [];
         foreach ($finder as $file) {
             $images[] = $file->getFilename();

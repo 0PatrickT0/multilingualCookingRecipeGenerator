@@ -14,7 +14,7 @@ class SecurityController extends AbstractController
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         $finder = new Finder();
-        $finder->files()->in('images')->name('*.png');
+        $finder->files()->in('logo')->name('*.png');
         $images = [];
         foreach ($finder as $file) {
             $images[] = $file->getFilename();

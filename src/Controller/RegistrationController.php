@@ -23,7 +23,7 @@ class RegistrationController extends AbstractController
     public function index(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager, ValidatorInterface $validator, FormFactoryInterface $formFactory): Response
     {
         $finder = new Finder();
-        $finder->files()->in('images')->name('*.png');
+        $finder->files()->in('logo')->name('*.png');
         $images = [];
         foreach ($finder as $file) {
             $images[] = $file->getFilename();
