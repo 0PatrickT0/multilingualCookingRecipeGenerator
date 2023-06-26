@@ -43,7 +43,26 @@ class GPT3_5_Service
                         'messages' => [
                             [
                                 'role' => 'user',
-                                'content' => "Please provide a healthy and light recipe using the following ingredients: " . $instructions . ". You can provide the ingredients in the same language as the one you would like the recipe to be in.",
+                                'content' => "Initial context: You provide healthy and balanced recipes based on the ingredients provided in the instructions.
+                                
+                                Instructions: Please provide a recipe using the following ingredients: $instructions.
+                                
+                                Limitations: Please respond strictly in the same language as the ingredients provided in the instructions. Make sure to include necessary details for each step of the recipe.
+                                
+                                Example:
+                                
+                                Recipe name:
+                                
+                                Ingredients:
+                                
+                                Instructions:
+                                
+                                Response structure:
+                                Strictly in the same language as the ingredients provided in the instructions.
+                                Recipe name:
+                                Ingredients:
+                                Preparation instructions:
+                                Finish by wishing a good appetite.",
                             ]
                         ],
                     ],
